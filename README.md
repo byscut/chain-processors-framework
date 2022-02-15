@@ -3,6 +3,7 @@
 链式开发框架，模块化代码
 
 ## 背景
+
 对于简单的模型预测服务功能，目前都是各人按各人的想法设计代码结构和数据结构。这样存在的问题有：  
 
 1. 缺少写代码的规范，设计、开发、迭代和维护成本都很高，效率低。
@@ -10,12 +11,16 @@
 
 为了解决以上问题，应该有一个编程框架，按照统一的编程框架来开发。
 
+
 ## 框架设计
 
 ### 框架架构图
+
 ![架构图](链式执行框架.png)
 
+
 ### 名词解释
+
 processor：  
 一个逻辑的最小单位，比如对于网页抽取服务，编码转换可以作为一个processor，建dom树可以作为一个processor.
 
@@ -33,18 +38,29 @@ route\_manager：
 根据输入决定走哪一个processor_dag.
 
 ### 框架工作流程
+
 外部请求首先走到route\_manager，由route\_manager确定走哪一个processor\_dag，在processor\_dag内部，根据预先设定好的dag走完各processor， 各processor之间的信息交互通过context\_manager.
 
 
 ## 使用说明
 
-###框架使用说明
+### 框架使用说明
 
-框架安装方法（pypi）：
+
+#### Pypi address
+
+https://pypi.org/project/chain-processors-framework/
+
+#### Latest version
+
+0.0.2
+
+#### 框架安装（pypi）
 
 `pip install chain-processors-framework -i https://pypi.python.org/pypi`
 
-安装后导入：
+#### 框架导入
+
 `from chain_processors.frameworks import * `
 
 依赖导入完成后继承处理类[Processor](chain_processors/frameworks/processor.py)，实现init逻辑并编写单元处理逻辑的方法process。
@@ -53,7 +69,7 @@ route\_manager：
 
 调用示例代码：[run_example.py](chain_processors/run_example.py)
 
-### 配置文件编写说明
+#### 配置文件编写说明
 
 配置文件为Json格式。顶层包含三个元素，分别为processors，input和output。
 
@@ -67,7 +83,7 @@ route\_manager：
     - processors.*.path：processor对应类的路径，一般来说，是相对于项目根目录的路径。
     - processors.*.args：定义了一下参数，可以在对应的类的初始化函数里通过kwargs参数获取其值。
 
-### 自定义类编写说明
+#### 自定义类编写说明
 
 - 自定义类必须继承自基类chain_processors.frameworks.processor。 
 - 自定义类必须实现基类中的\_\_init\_\_()和process()方法。其中init只会初始化一次，数据处理逻辑写在process中。

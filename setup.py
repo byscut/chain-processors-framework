@@ -18,6 +18,7 @@ setup(
     author_email='byscut@foxmail.com',
     zip_safe=True,
     description='coding with a chain framework',
-    install_requires=reqs
+    install_requires=reqs,
+    python_requires=">=3.6"
 )
 
