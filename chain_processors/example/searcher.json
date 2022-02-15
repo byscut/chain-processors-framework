@@ -1,0 +1,42 @@
+{
+  "processors": [
+    {
+      "name": "query_processor",
+      "path": "chain_processors.example.query_processor.QueryProcessor",
+      "args": {}
+    },
+    {
+      "name": "selector",
+      "path": "chain_processors.example.recall_processor.RecallProcessor",
+      "args": {
+        "es_host": "es_address",
+        "es_index": "es_index"
+      }
+    },
+    {
+      "name": "preranker",
+      "path": "chain_processors.example.rank_processor.PreRankProcessor",
+      "args": {}
+    },
+    {
+      "name": "ranker",
+      "path": "chain_processors.example.rank_processor.RankProcessor",
+      "args": {
+        "model_path": "model_path",
+        "model_rank_num": "model_rank_num"
+      }
+    },
+    {
+      "name": "postranker",
+      "path": "chain_processors.example.rank_processor.PostRankProcessor",
+      "args": {}
+    }
+  ],
+  "input": {
+    "type": "single",
+    "name": "system_input"
+  },
+  "output": {
+    "type": "single"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "processors": [
+    {
+      "name": "processor:test",
+      "path": "chain_processors.processors.concrect_processor.TestProcessor",
+      "args": {
+        "mongo_conf": {
+          "mongo_url": "mongodb://address",
+          "mongo_db": "mongod_user",
+          "collection": "mongodb_coll"
+        }
+      }
+    },
+    {
+      "name": "processor:test2",
+      "path": "chain_processors.processors.concrect_processor.TestProcessor",
+      "args": {}
+    },
+    {
+      "name": "processor:test3",
+      "path": "chain_processors.processors.concrect_processor.TestProcessor",
+      "args": {}
+    }
+  ],
+  "input": {
+    "type": "list",
+    "name": "system_input"
+  },
+  "output": {
+    "type": "list"
+  }
+}
