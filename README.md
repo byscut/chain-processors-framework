@@ -42,7 +42,7 @@ route\_manager：
 
 框架安装方法（pypi）：
 
-`pip install  -i `
+`pip install chain-processors-framework -i https://pypi.python.org/pypi`
 
 安装后导入：
 `from chain_processors.frameworks import * `
